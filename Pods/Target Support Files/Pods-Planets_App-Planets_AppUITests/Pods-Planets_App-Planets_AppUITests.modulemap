@@ -1,0 +1,6 @@
+framework module Pods_Planets_App_Planets_AppUITests {
+  umbrella header "Pods-Planets_App-Planets_AppUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
