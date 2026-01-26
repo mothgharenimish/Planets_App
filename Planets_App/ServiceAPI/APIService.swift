@@ -16,7 +16,7 @@ class APIService {
     private init() {}
 
     func fetchPlanets(completion: @escaping (Result<[Datum], Error>) -> Void) {
-        let url = "http://192.168.1.7/myproject/Planets/planetread.php"
+        let url = "http://192.168.1.5:8080/myproject/Planets/planetread.php"
         
         AF.request(url).validate().responseDecodable(of: PlanetData.self) { response in
             switch response.result {

@@ -11,7 +11,7 @@ import SwiftUI
 struct Planets_AppApp: App {
     var body: some Scene {
         WindowGroup {
-            Planets_Details()
+            Splash_Screen()
         }
     }
 }

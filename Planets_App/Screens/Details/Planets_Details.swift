@@ -6,21 +6,29 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct Planets_Details: View {
+    
+    let planet : Datum
     var body: some View {
         
         ZStack {
             
-            Color(UIColor(hex: "#f1f0eb")!)
-
-            ScrollView  {                
-                    Image("earth")
-                        .resizable()
-                        .aspectRatio(1,contentMode: .fit)
-                        .edgesIgnoringSafeArea(.top)
+            LinearGradient(gradient: Gradient(colors: [
+                Color(UIColor(hex: "#291111")!),
+                Color(UIColor(hex: "#682b2b")!),
+                Color(UIColor(hex: "#ed6262")!)
+            ]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            .ignoresSafeArea()
+            ScrollView  {
+                KFImage(URL(string: planet.planetImagePath))
+                                  .resizable()
+                                  .aspectRatio(1, contentMode: .fit)
                 
-                DescriptionView()
+                VStack(alignment: .leading) {
+                    DescriptionView(planet: planet)
+                }
             }
             .edgesIgnoringSafeArea(.top)
             
@@ -29,5 +37,5 @@ struct Planets_Details: View {
 }
 
 #Preview {
-    Planets_Details()
+    Planets_Details(planet: Datum(id: "", planetName: "", planetImagePath: "", planetDescription: "", planetWeight: "", planetGases:PlanetGases(nitrogenN: "", planetGasesOxygenO: "", argonAr: "", carbonDioxideCO: "", carbonMonoxideCO: "", heliumHe: "", sodiumNa: "", oxygenO: "", hydrogenH: "", methaneCH: "", molecularHydrogenH: ""), planetColor: "", planetHistory: "", planetTemperature: "", planetDiameter: "", createdAt: ""))
 }

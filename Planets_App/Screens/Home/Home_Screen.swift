@@ -67,16 +67,21 @@ struct Home_Screen: View {
                               
                               ScrollView(.horizontal, showsIndicators: false) {
                                   HStack(spacing: 0) {
-                                      ForEach(planets.shuffled().indices, id: \.self) { index in
-                                          let planet = planets.shuffled()[index] // Shuffle the planets list
-                                          let subtitle = index < subtitles.count ? subtitles[index] : "A Mysterious World"
+                                      ForEach(planets.indices, id: \.self) { index in
+                                          let planet = planets[index]
+                                              let subtitle = index < subtitles.count ? subtitles[index] : "A Mysterious World"
 
-                                          PlanetsCard(
-                                              imageUrl: planet.planetImagePath,
-                                              size: 210,
-                                              title: planet.planetName,
-                                              subtitle: subtitle
-                                          )
+                                          NavigationLink {
+                                              Planets_Details(planet: planet)
+                                          } label: {
+                                              PlanetsCard(
+                                                  imageUrl: planet.planetImagePath,
+                                                  size: 210,
+                                                  title: planet.planetName,
+                                                  subtitle: subtitle
+                                              )
+                                          }
+                                         
                                       }
                                   }
                                   .padding(.horizontal, 0)
@@ -93,6 +98,7 @@ struct Home_Screen: View {
                       switch result {
                       case .success(let data):
                           self.planets = data
+                          print("The planet data \(data)")
                       case .failure(let error):
                           print("Error fetching planets: \(error.localizedDescription)")
                       }
