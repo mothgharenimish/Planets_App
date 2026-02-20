@@ -6,13 +6,23 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct VideoCard: View {
+    
+    let video : PlanetVideoElement
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        VStack(alignment: .leading, spacing: 10) {
+            
+            VideoPlayer(player: AVPlayer(url: URL(string: video.videoURL)!))
+                           .frame(height: 200)
+                           .cornerRadius(12)
+            
+        }
     }
 }
 
 #Preview {
-    VideoCard()
+    VideoCard(video: PlanetVideoElement(id: "", planetName: "", videoURL: "http://192.168.1.22:8080/myproject/SolarSystem/videos/earth.mp4", videoSize: "", videoType: ""))
 }

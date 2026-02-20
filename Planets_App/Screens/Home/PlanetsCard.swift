@@ -11,7 +11,7 @@ import SwiftyJSON
 import Kingfisher
 
 struct PlanetsCard: View {
-    let imageUrl: String
+       let imageUrl: String
         let size: CGFloat
         let title: String
         let subtitle: String
