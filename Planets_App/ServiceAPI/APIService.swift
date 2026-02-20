@@ -6,8 +6,6 @@
 //
 
 import Foundation
-
-import Foundation
 import Alamofire
 
 class APIService {
@@ -25,6 +23,24 @@ class APIService {
             case .failure(let error):
                 completion(.failure(error))
             }
+        }
+    }
+    
+    func fetchvideoplanets(completion: @escaping (Result<[PlanetVideoElement], Error>) -> Void) {
+        
+        let url = "http://192.168.1.5:8080/myproject/SolarSystem/readplanetvideo.php"
+        
+        AF.request(url).validate().responseDecodable(of: PlanetVideo.self) { response in
+            
+            switch response.result {
+                
+            case .success(let planetvideodata):
+                completion(.success(planetvideodata.self))
+                print("The data of the planet video data is \(planetvideodata)")
+            case .failure(let error):
+                completion(.failure(error))
+            }
+            
         }
     }
 }

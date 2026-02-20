@@ -59,3 +59,30 @@ struct PlanetGases: Codable {
 }
 
 
+struct GasStat :Identifiable {
+    let id = UUID()
+    let name : String
+    let value : Double
+}
+
+func getGasState(from gases : PlanetGases) -> [GasStat] {
+    
+    return [
+        
+               GasStat(name: "N₂", value: Double(gases.nitrogenN ?? "0") ?? 0),
+               GasStat(name: "O₂", value: Double(gases.planetGasesOxygenO ?? "0") ?? 0),
+               GasStat(name: "Ar", value: Double(gases.argonAr ?? "0") ?? 0),
+               GasStat(name: "CO₂", value: Double(gases.carbonDioxideCO ?? "0") ?? 0),
+               GasStat(name: "CO", value: Double(gases.carbonMonoxideCO ?? "0") ?? 0),
+               GasStat(name: "He", value: Double(gases.heliumHe ?? "0") ?? 0),
+               GasStat(name: "Na", value: Double(gases.sodiumNa ?? "0") ?? 0),
+               GasStat(name: "O", value: Double(gases.oxygenO ?? "0") ?? 0),
+               GasStat(name: "H", value: Double(gases.hydrogenH ?? "0") ?? 0),
+               GasStat(name: "CH₄", value: Double(gases.methaneCH ?? "0") ?? 0),
+               GasStat(name: "H₂", value: Double(gases.molecularHydrogenH ?? "0") ?? 0)
+    ]
+    
+        .filter { $0.value > 0 }
+
+    
+}

@@ -18,7 +18,7 @@ struct Planets_Details: View {
             LinearGradient(gradient: Gradient(colors: [
                 Color(UIColor(hex: "#291111")!),
                 Color(UIColor(hex: "#682b2b")!),
-                Color(UIColor(hex: "#ed6262")!)
+                Color(UIColor(hex: planet.planetColor)!)
             ]), startPoint: .topLeading, endPoint: .bottomTrailing)
             .ignoresSafeArea()
             ScrollView  {
