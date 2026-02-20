@@ -54,7 +54,9 @@ struct Splash_Screen: View {
                     .padding(.bottom, 60)
                 }
                 .navigationDestination(isPresented: $isNavigated) {
-                    Home_Screen()  // Destination screen
+                    MainTabView() // Destination screen
+                        .navigationBarBackButtonHidden(true)
+
                     
                 }
             }
